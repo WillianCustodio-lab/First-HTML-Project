@@ -1,0 +1,179 @@
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/MoonStars.svg);
+}
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.1);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/Sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  */
+
+  /*short hand/atalho:
+  background: color image repeat position/size */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box; /*delimita o padding para se enquadrar dentro da largura estabelecida*/
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color); /*var = faz referencia a variavel*/
+}
+
+#container {
+  width: 360px;
+  margin: auto;
+  margin-top: 56px auto 0px;
+
+  padding: 0 24px; /*define o tamanho do espaço ao redor do content*/
+}
+
+/*
+alt da imagem em branco(texto)
+#profile {
+  color: aliceblue;
+}
+*/
+
+#switch {
+  position: relative; /*garante que o conteudo não ira flutuar sobre toda a pagina,
+                      somente dentro da caixa que está inserido*/
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute; /*possibilita sobreposição de conteudo*/
+  top: 50%;
+  left: 0;
+  z-index: 1; /*define se o conteudo fica sobreposto ou exposto*/
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block; /*p/ o span aceitar width e height (padrão span é inline)*/
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/*profile*/
+#profile {
+  text-align: center; /*só é possível com display inline*/
+  padding: 24px;
+} /*alternat: definir profile img como display block e inserir margin: auto*/
+
+#profile img {
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px; /*espaçamento entre o @ e a imagem*/
+}
+
+/* links */
+ul {
+  list-style: none; /*retira os pontinhos dos tópicos*/
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /*espaço entre as listas*/
+
+  padding: 24px 0;
+}
+
+ul li a {
+  border: 1px solid var(--text-color);
+
+  display: flex;
+  align-items: center; /* conteudo fica ao meio(com base na altura)*/
+  justify-content: center; /*alinha o conteudo ao meio(com base na linha)*/
+
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px; /*arredonda a borda*/
+
+  backdrop-filter: blur(4x);
+  -webkit-backdrop-filter: blur(4x);
+
+  text-decoration: none; /*retira a linha do link(p/ add "underline)*/
+  font-weight: 500; /*bold = acima de 400*/
+
+  transition: background 0.2s;
+}
+
+/* pseudo-selector (modificações ao passar o mouse sobre o conteúdo)*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*social links*/
+#social-links {
+  display: flex;
+  justify-content: center;
+
+  padding: 24px 0;
+
+  font-size: 24px; /*tamanho dos icones*/
+}
+
+#social-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px; /*preenchimento dos icones*/
+
+  border-radius: 50%; /*bolinha perfeita*/
+}
+
+#social-links a:hover {
+  /*a = a cada item dentro da caixa*/
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px;
+  text-align: center;
+}
