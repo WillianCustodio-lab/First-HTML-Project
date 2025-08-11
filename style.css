@@ -78,11 +78,19 @@ alt da imagem em branco(texto)
   left: 0;
   z-index: 1; /*define se o conteudo fica sobreposto ou exposto*/
   transform: translateY(-50%);
+
+  animation: slide-back 0.2s; /*não é necessário "forwards" pois nesta seção está que sua posição inicial
+                              (equivalente a final da animação) já está como left 0;*/
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  /*right: 0;
+  left: initial;*/
+  animation: slide-in 0.2s forwards; /*mantem o botão na posição final depois da animação*/
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -180,11 +188,31 @@ footer {
   text-align: center;
 }
 
+/*media queries*/
 @media (min-width: 700px) {
   :root {
     --bg-url: url(./assets/bg-desktop.jpg);
   }
   .light {
     --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/*animation no botão switch*/
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
